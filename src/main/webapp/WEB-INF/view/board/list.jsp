@@ -1,0 +1,121 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <title>MyWeb${test }</title>
+</head>
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #F5F5F5;">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <i class="bi bi-tree ms-2 fs-3"></i>
+                <span class="fw-bold fs-3 mx-1">MyWeb</span>
+            </a>
+            <!-- toggle button for mobile nav -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- navbar links -->
+            <div class="collapse navbar-collapse justify-content-end align-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="list.jsp" class="nav-link">
+                            <span class="fs-4 mx-1">List</span>    
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.jsp" class="nav-link">
+                            <span class="fs-4 mx-1">로그인</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reg.jsp" class="nav-link">
+                            <span class="fs-4 mx-1">회원가입</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- content -->
+    <section class="container-xxl my-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th style="width: 25%;">Title</th>
+                    <th style="width: 25%;">Writer</th>
+                    <th style="width: 25%;">Date</th>
+                    <th>Hit</th>
+                    <th>Like</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="detail.jsp">title</a></td>
+                    <td>writer</td>
+                    <td>1999-01-01</td>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- search, pagination, write-->
+    <section class="container-xl">
+        <div class="row">
+            <!-- search form -->
+            <div class="col-4 justify-content-start">
+                <form class="search-form">
+                    <fieldset>
+                        <select class="form-select-sm" name="field" style="width:80px;">
+                            <option value="listTitle">제목</option>
+                            <option value="userId">작성자</option>
+                        </select> 		
+                        <input type="text" name="query" value="" style="width: 150px;"/>
+					    <input class="btn btn-secondary" type="submit" value="검색" />
+                    </fieldset>
+                </form>
+            </div>
+            <!-- pagination -->
+            <div aria-label="Page navigation example" class="col-4">
+                <ul class="pagination pagination-sm justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- write -->
+            <div class="col-4 d-md-flex justify-content-end">
+                <a href="write.jsp"><button class="btn btn-secondary" type="button">글쓰기</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- js setting -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

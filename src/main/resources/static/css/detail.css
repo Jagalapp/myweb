@@ -1,0 +1,25 @@
+.hitsLikeCommentText{
+    font-size: smaller;
+    color: #808080;
+    font-weight: bold;
+}
+.userNameText{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: slateblue;
+}
+#detailContent{
+    min-height: 200px;
+}
+#likeBtn{
+    width: 100px;
+    margin: auto;
+    display: block;
+    border: 2px solid #808080;
+    background-color: antiquewhite;
+}
+#likeBtn{
+    _display: none;
+}
+.lUDBtn{
+    _display: none;
+}
