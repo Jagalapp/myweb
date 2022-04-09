@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <main>
 	    <section class="container-xxl my-4">
 	        <table class="table">
@@ -14,14 +15,16 @@
 	                </tr>
 	            </thead>
 	            <tbody>
+	            	<c:forEach var="n" items="${list }">
 	                <tr>
-	                    <td>1</td>
-	                    <td><a href="detail.jsp">title</a></td>
-	                    <td>writer</td>
-	                    <td>1999-01-01</td>
-	                    <td>1</td>
-	                    <td>2</td>
+	                    <td>${n.listId }</td>
+	                    <td><a href="detail.jsp">${n.listTitle }</a></td>
+	                    <td>${n.userId }</td>
+	                    <td>${n.listDate }</td>
+	                    <td>${n.listHit }</td>
+	                    <td>${n.listLike }</td>
 	                </tr>
+	                </c:forEach>
 	            </tbody>
 	        </table>
 	    </section>

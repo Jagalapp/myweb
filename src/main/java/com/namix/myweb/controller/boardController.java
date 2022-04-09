@@ -1,19 +1,41 @@
 package com.namix.myweb.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.namix.myweb.entity.Notice;
+import com.namix.myweb.service.NoticeService;
 
 @Controller("boardCotroller")
 @RequestMapping("/board/")
 public class boardController {
+	
+	@Autowired
+	private NoticeService service;
 
 	@RequestMapping("list")
-	public String list() {
+	public String list(Model model) {
+		
+		int page = 2;
+		String field = "listTitle";
+		String query = "";
+		
+		List<Notice> list = service.getList(page ,field, query);
+		
+		model.addAttribute("list", list);
+		
 		return "board.list";
 	}
 	
 	@RequestMapping("detail")
 	public String detail() {
+		
+		Notice notice = service.getNotice(1);
+		
 		return "board.detail";
 	}
 	
