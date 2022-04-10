@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.namix.myweb.dao.NoticeDao">
+  <select id="getList" resultType="com.namix.myweb.entity.Notice">
+    	select * from list where ${field} like '%${query}%' order by listId desc limit #{offset}, #{size}
+  </select>
+  
+  <select id="getDetail" resultType="com.namix.myweb.entity.Notice">
+  		select * from list where listid = #{id}
+  </select>
+  
+  <select id="getCount">
+  		select count(*) from list where ${field} like '%${query}%'
+  </select>
+  
+  <select id="getListLike">
+	 	select count(*) from listlike where listId = #{id}
+  </select>
+  
+  <update id="updateDetail" parameterType="com.namix.myweb.entity.Notice">
+  		update list set listTitle = #{listTitle}, listContent = #{listContent} where listId = #{listId}
+  </update>
+  
+  <insert id="writeDetail" parameterType="com.namix.myweb.entity.Notice">
+  		insert into list(listTitle, listContent, userId) values(#{listTitle}, #{listContent}, #{userId})
+  </insert>
+  
+  <delete id="deleteDetail">
+  		delete from list where listId = #{id)
+  </delete>
+  
+  <insert id="addLike" parameterType="com.namix.myweb.entity.ListLike">
+  		insert into listlike(listId, userId) values(#{listId}, #{userId})
+  </insert>
+  
+  <insert id="postComment" parameterType="com.namix.myweb.entity.Comment">
+  		insert into comment(commentContent, userId, listId) values(#{commentContent}, #{userId}, #{listId})
+  </insert>
+  
+</mapper>

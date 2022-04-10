@@ -20,11 +20,11 @@ public class boardController {
 	@RequestMapping("list")
 	public String list(Model model) {
 		
-		int page = 2;
+		int page = 1;
 		String field = "listTitle";
 		String query = "";
 		
-		List<Notice> list = service.getList(page ,field, query);
+		List<Notice> list = service.getList();
 		
 		model.addAttribute("list", list);
 		
@@ -34,7 +34,7 @@ public class boardController {
 	@RequestMapping("detail")
 	public String detail() {
 		
-		Notice notice = service.getNotice(1);
+		Notice notice = service.getDetail(3);
 		
 		return "board.detail";
 	}

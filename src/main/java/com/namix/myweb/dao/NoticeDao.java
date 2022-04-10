@@ -5,14 +5,20 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.namix.myweb.entity.Comment;
+import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
 
 @Mapper
 public interface NoticeDao {
 
-	@Select("select * from list where ${field} like '%${query}%' order by listId desc limit #{offset}, #{size}")
 	List<Notice> getList(int offset, int size, String field, String query);
-	
-	Notice getNotice(int id);
-
+	Notice getDetail(int id);
+	int getCount(String field, String query);
+	int getListLike(int id);
+	int updateDetail(Notice notice);
+	int writeDetail(Notice notice);
+	int deleteDetail(int id);
+	int addLike(ListLike listLike);
+	int postComment(Comment comment);
 }
