@@ -11,11 +11,11 @@
   		select * from list where listid = #{id}
   </select>
   
-  <select id="getCount">
+  <select id="getCount" resultType="int">
   		select count(*) from list where ${field} like '%${query}%'
   </select>
   
-  <select id="getListLike">
+  <select id="getListLike" resultType="int">
 	 	select count(*) from listlike where listId = #{id}
   </select>
   

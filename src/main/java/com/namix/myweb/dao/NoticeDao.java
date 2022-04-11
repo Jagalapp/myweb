@@ -2,14 +2,10 @@ package com.namix.myweb.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
 
-@Mapper
 public interface NoticeDao {
 
 	List<Notice> getList(int offset, int size, String field, String query);

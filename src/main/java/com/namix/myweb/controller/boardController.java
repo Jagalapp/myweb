@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.namix.myweb.entity.Notice;
 import com.namix.myweb.service.NoticeService;
+import com.namix.myweb.service.UserService;
 
 @Controller("boardCotroller")
 @RequestMapping("/board/")
 public class boardController {
 	
 	@Autowired
-	private NoticeService service;
+	private NoticeService noticeService;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -24,7 +27,7 @@ public class boardController {
 		String field = "listTitle";
 		String query = "";
 		
-		List<Notice> list = service.getList();
+		List<Notice> list = noticeService.getList();
 		
 		model.addAttribute("list", list);
 		
@@ -34,7 +37,7 @@ public class boardController {
 	@RequestMapping("detail")
 	public String detail() {
 		
-		Notice notice = service.getDetail(3);
+		Notice notice = noticeService.getDetail(3);
 		
 		return "board.detail";
 	}
