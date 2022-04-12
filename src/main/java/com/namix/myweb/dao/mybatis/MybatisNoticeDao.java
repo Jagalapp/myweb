@@ -35,6 +35,11 @@ public class MybatisNoticeDao implements NoticeDao {
 	public int getCount(String field, String query) {
 		return noticeDaoMapper.getCount(field, query);
 	}
+	
+	@Override
+	public int getCommentCount(int id) {
+		return noticeDaoMapper.getCommentCount(id);
+	}
 
 	@Override
 	public int getListLike(int id) {

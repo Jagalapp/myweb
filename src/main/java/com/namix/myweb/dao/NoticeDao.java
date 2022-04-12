@@ -11,6 +11,7 @@ public interface NoticeDao {
 	List<Notice> getList(int offset, int size, String field, String query);
 	Notice getDetail(int id);
 	int getCount(String field, String query);
+	int getCommentCount(int id);
 	int getListLike(int id);
 	int updateDetail(Notice notice);
 	int writeDetail(Notice notice);

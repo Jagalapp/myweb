@@ -55,6 +55,12 @@ public class NoticeServiceimp implements NoticeService {
 		return noticeDao.getCount(field, query);
 	}
 	
+	// 댓글 개수 요청
+	@Override
+	public int getCommentCount(int id) {
+		return noticeDao.getCommentCount(id);
+	}
+	
 	// 좋아요 개수 요청
 	@Override
 	public int getListLike(int id) {

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <main>
 	    <section class="container-xxl my-4">
 	        <table class="table">
@@ -18,9 +20,9 @@
 	            	<c:forEach var="n" items="${list }">
 	                <tr>
 	                    <td>${n.listId }</td>
-	                    <td><a href="detail.jsp">${n.listTitle }</a></td>
+	                    <td><a href="/board/detail?id=${n.listId }">${n.listTitle }</a></td>
 	                    <td>${n.userId }</td>
-	                    <td>${n.listDate }</td>
+	                    <td><fmt:formatDate value="${n.listDate }" pattern="yy-mm-dd"/></td>
 	                    <td>${n.listHit }</td>
 	                    <td>${n.listLike }</td>
 	                </tr>
@@ -36,31 +38,41 @@
 	            <div class="col-4 justify-content-start">
 	                <form class="search-form">
 	                    <fieldset>
-	                        <select class="form-select-sm" name="field" style="width:80px;">
-	                            <option value="listTitle">제목</option>
-	                            <option value="userId">작성자</option>
+	                        <select class="form-select-sm" name="f" style="width:80px;">
+	                            <option ${param.f == "listTitle"?"selected":"" } value="listTitle">제목</option>
+	                            <option ${param.f == "userId"?"selected":"" } value="userId">작성자</option>
 	                        </select> 		
-	                        <input type="text" name="query" value="" style="width: 150px;"/>
+	                        <input type="text" name="q" value="${param.q }" style="width: 150px;" />
 						    <input class="btn btn-secondary" type="submit" value="검색" />
 	                    </fieldset>
 	                </form>
 	            </div>
 	            <!-- pagination -->
+	            <c:set var="page" value="${(empty param.p)?1:param.p }" />
+				<c:set var="firstPage" value="${page - (page - 1) % 5}" />
+				<c:set var="lastPage" value="${ fn:substringBefore(Math.ceil(count/10), '.') }" />
+				
 	            <div aria-label="Page navigation example" class="col-4">
 	                <ul class="pagination pagination-sm justify-content-center">
-	                    <li class="page-item">
-	                        <a class="page-link" href="#" aria-label="Previous">
-	                        <span aria-hidden="true">&laquo;</span>
-	                        </a>
-	                    </li>
-	                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	                    <li class="page-item">
-	                        <a class="page-link" href="#" aria-label="Next">
-	                        <span aria-hidden="true">&raquo;</span>
-	                        </a>
-	                    </li>
+	                	<c:if test="${firstPage > 1 }">
+		                    <li class="page-item">
+		                        <a class="page-link" href="?f=${param.f }&q=${param.q }&p=${firstPage - 5 }" aria-label="Previous">
+		                        <span aria-hidden="true">&laquo;</span>
+		                        </a>
+		                    </li>
+	                    </c:if>
+	                    <c:forEach var="i" begin="0" end="4">
+	                    <c:if test="${(firstPage + i) <= lastPage }" >	                    
+	                    	<li class="page-item"><a class="page-link" href="?f=${param.f }&q=${param.q }&p=${firstPage + i }">${firstPage + i }</a></li>
+	                    </c:if>
+	                    </c:forEach>
+	                    <c:if test="${firstPage + 4 < lastPage }">
+		                    <li class="page-item">
+		                        <a class="page-link" href="?f=${param.f }&q=${param.q }&p=${firstPage + 5 }" aria-label="Next">
+		                        <span aria-hidden="true">&raquo;</span>
+		                        </a>
+		                    </li>
+	                    </c:if>
 	                </ul>
 	            </div>
 	            <!-- write -->

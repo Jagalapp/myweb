@@ -8,11 +8,15 @@
   </select>
   
   <select id="getDetail" resultType="com.namix.myweb.entity.Notice">
-  		select * from list where listid = #{id}
+  		select * from list where listId = #{id}
   </select>
   
   <select id="getCount" resultType="int">
   		select count(*) from list where ${field} like '%${query}%'
+  </select>
+  
+  <select id="getCommentCount" resultType="int">
+  		select count(*) from comment where listId = #{id}
   </select>
   
   <select id="getListLike" resultType="int">

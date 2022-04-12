@@ -17,6 +17,8 @@ public interface NoticeService {
 	// 글 개수 요청
 	int getCount();
 	int getCount(String field, String query);
+	// 댓글 개수 요청
+	int getCommentCount(int id);
 	// 좋아요 개수 요청
 	int getListLike(int id);
 	// 글 작성 요청
