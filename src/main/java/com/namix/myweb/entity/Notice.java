@@ -9,20 +9,18 @@ public class Notice {
 	private String listContent;
 	private Date listDate;
 	private int listHit;
-	private int listLike;
 	private String userId;
 	
 	public Notice() {
 		
 	}
 	
-	public Notice(int listId, String listTitle, String listContent, Date listDate, int listHit, int listLike, String userId) {
+	public Notice(int listId, String listTitle, String listContent, Date listDate, int listHit, String userId) {
 		this.listId = listId;
 		this.listTitle = listTitle;
 		this.listContent = listContent;
 		this.listDate = listDate;
 		this.listHit = listHit;
-		this.listLike = listLike;
 		this.userId = userId;
 	}
 	public int getListId() {
@@ -54,12 +52,6 @@ public class Notice {
 	}
 	public void setListHit(int listHit) {
 		this.listHit = listHit;
-	}
-	public int getListLike() {
-		return listLike;
-	}
-	public void setListLike(int listLike) {
-		this.listLike = listLike;
 	}
 	public String getUserId() {
 		return userId;

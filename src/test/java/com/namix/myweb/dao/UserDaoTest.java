@@ -20,9 +20,6 @@ class UserDaoTest {
 		System.out.println("hello");
 		
 		User user = new User();
-		
-		int a = userDao.login(user);
-		System.out.println(a);
 	}
 
 }

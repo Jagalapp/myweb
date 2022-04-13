@@ -5,6 +5,7 @@ import java.util.List;
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.User;
 
 public interface NoticeService {
 
@@ -21,15 +22,17 @@ public interface NoticeService {
 	int getCommentCount(int id);
 	// 좋아요 개수 요청
 	int getListLike(int id);
+	//댓글 요청
+	List<Comment> getComment(int id);
+	// 글 좋아요 클릭 요청
+	int addLIke(ListLike listLike);
+	// 댓글 작성 요청
+	int postComment(Comment comment);
 	// 글 작성 요청
 	int writeDetail(Notice notice);
 	// 글 수정 요청
 	int updateDetail(Notice notice);
 	// 글 삭제 요청
 	int deleteDetail(int id);
-	// 글 좋아요 클릭 요청
-	int addLIke(ListLike listLike);
-	// 댓글 작성 요청
-	int postComment(Comment comment);
 
 }

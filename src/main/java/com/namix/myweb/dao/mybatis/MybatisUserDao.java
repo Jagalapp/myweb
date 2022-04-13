@@ -18,8 +18,8 @@ public class MybatisUserDao implements UserDao {
 	}
 	
 	@Override
-	public int login(User user) {
-		return userDaoMapper.login(user);
+	public User login(String userId, String userPassword) {
+		return userDaoMapper.login(userId, userPassword);
 	}
 
 	@Override

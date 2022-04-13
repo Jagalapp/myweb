@@ -1,15 +1,23 @@
 package com.namix.myweb.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.User;
+import com.namix.myweb.script.ScriptClass;
 import com.namix.myweb.service.NoticeService;
 import com.namix.myweb.service.UserService;
 
@@ -36,23 +44,48 @@ public class BoardController {
 		return "board.list";
 	}
 	
-	@RequestMapping("detail")
+	@GetMapping("detail")
 	public String detail(Model model, @RequestParam("id") Integer id) {
 		
-		
-		/*
-		 * Notice notice = noticeService.getDetail(17);
-		 * 
-		 * model.addAttribute("n", notice);
-		 */
-		 
+		  Notice notice = noticeService.getDetail(id);
+		  int commentCount = noticeService.getCommentCount(id);
+		  int listLike = noticeService.getListLike(id);
+		  List<Comment> comment = noticeService.getComment(id);
+		  
+		  model.addAttribute("n", notice);
+		  model.addAttribute("commentCount", commentCount);
+		  model.addAttribute("listLike", listLike);
+		  model.addAttribute("comment", comment);
 		
 		return "board.detail";
 	}
 	
-	@RequestMapping("login")
+	@PostMapping("detail")
+	public String postComment(Model model, @RequestParam("id") Integer id,
+				@RequestParam("commentContent") String commentContent) {
+		
+		return "board.detail";
+	}
+	
+	@GetMapping("login")
 	public String login() {
 		return "board.login";
+	}
+	
+	@PostMapping("login")
+	public String postLogin(Model model, @RequestParam("userId") String userId, HttpServletResponse response,
+				@RequestParam("userPassword") String userPassword, HttpSession session) throws IOException {
+		
+		User user = userService.login(userId, userPassword);
+		
+		if(user == null) {
+			ScriptClass.alert(response, "아이디 혹은 비밀번호가 올바르지 않습니다.");
+			return "redirect:login";
+		}else {
+			ScriptClass.alert(response, "로그인 성공");
+			session.setAttribute("user", user);
+			return "redirect:list";
+		}		
 	}
 	
 	@RequestMapping("reg")

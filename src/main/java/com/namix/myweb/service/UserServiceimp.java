@@ -14,8 +14,8 @@ public class UserServiceimp implements UserService {
 	
 	// 로그인 요청
 	@Override
-	public int login(User user) {
-		return userDao.login(user);
+	public User login(String userId, String userPassword) {
+		return userDao.login(userId, userPassword);
 	}
 
 	// 회원가입 요청

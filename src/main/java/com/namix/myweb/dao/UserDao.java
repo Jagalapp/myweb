@@ -4,7 +4,7 @@ import com.namix.myweb.entity.User;
 
 public interface UserDao {
 
-	int login(User user);
+	User login(String userId, String userPassword);
 	int reg(User user);	
 	
 }

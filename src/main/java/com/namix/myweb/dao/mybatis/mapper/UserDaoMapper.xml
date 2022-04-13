@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.namix.myweb.dao.UserDao">
- 	<select id="login" parameterType="com.namix.myweb.entity.User" resultType="int">
+ 	<select id="login" resultType="com.namix.myweb.entity.User">
  		select * from user where userId = #{userId} and userPassword = #{userPassword}
  	</select>
  	<insert id="reg" parameterType="com.namix.myweb.entity.User">

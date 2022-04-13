@@ -4,7 +4,7 @@
 		<!-- login form -->
 	    <section class="container-lg my-5">
 	        <div class="row justify-content-center">
-	            <form action="loginAction" method="post" class="col-md-6">
+	            <form action="/board/login" method="post" class="col-md-6">
 	                <h3 class="text-center fw-bold text-muted mb-5">로그인</h3>
 	                <div class="form-grounp my-2">
 	                    <input type="text" class="form-control" placeholder="ID" name="userId" maxlength="20">

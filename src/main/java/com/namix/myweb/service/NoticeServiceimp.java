@@ -66,6 +66,24 @@ public class NoticeServiceimp implements NoticeService {
 	public int getListLike(int id) {
 		return noticeDao.getListLike(id);
 	}
+	
+	// 댓글 요청
+	@Override
+	public List<Comment> getComment(int id) {
+		return noticeDao.getComment(id);
+	}
+	
+	// 좋아요 클릭 요청
+	@Override
+	public int addLIke(ListLike listLike) {
+		return noticeDao.addLike(listLike);
+	}
+
+	// 댓글 작성 요청
+	@Override
+	public int postComment(Comment comment) {
+		return noticeDao.postComment(comment);
+	}
 
 	// 글 작성 요청
 	@Override
@@ -83,18 +101,6 @@ public class NoticeServiceimp implements NoticeService {
 	@Override
 	public int deleteDetail(int id) {
 		return noticeDao.deleteDetail(id);
-	}
-
-	// 좋아요 클릭 요청
-	@Override
-	public int addLIke(ListLike listLike) {
-		return noticeDao.addLike(listLike);
-	}
-
-	// 댓갈 작성 요청
-	@Override
-	public int postComment(Comment comment) {
-		return noticeDao.postComment(comment);
 	}
 
 }

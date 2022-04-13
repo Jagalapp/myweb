@@ -22,9 +22,9 @@
 	                    <td>${n.listId }</td>
 	                    <td><a href="/board/detail?id=${n.listId }">${n.listTitle }</a></td>
 	                    <td>${n.userId }</td>
-	                    <td><fmt:formatDate value="${n.listDate }" pattern="yy-mm-dd"/></td>
+	                    <td><fmt:formatDate value="${n.listDate }" pattern="yyyy-MM-dd"/></td>
 	                    <td>${n.listHit }</td>
-	                    <td>${n.listLike }</td>
+	                    <td>0</td>
 	                </tr>
 	                </c:forEach>
 	            </tbody>
