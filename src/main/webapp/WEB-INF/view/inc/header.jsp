@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!-- header -->
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #F5F5F5;">
         <div class="container-fluid">
@@ -20,16 +21,27 @@
                             <span class="fs-4 mx-1">List</span>    
                         </a>
                     </li>
+                    <c:choose>
+                    <c:when test="${empty user }">
                     <li class="nav-item">
-                        <a href="/board/login" class="nav-link">
+                        <a href="/user/login" class="nav-link">
                             <span class="fs-4 mx-1">로그인</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/board/reg" class="nav-link">
+                        <a href="/user/reg" class="nav-link">
                             <span class="fs-4 mx-1">회원가입</span>
                         </a>
                     </li>
+                    </c:when>
+                    <c:otherwise>
+                    <li class="nav-item">
+                        <a href="/user/logout" class="nav-link">
+                            <span class="fs-4 mx-1">로그아웃</span>
+                        </a>
+                    </li>
+                    </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>

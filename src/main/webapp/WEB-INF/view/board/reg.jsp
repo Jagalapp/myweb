@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<main>
+		<c:choose>
+		<c:when test="${empty user }">
 	    <!-- reg form -->
 	    <section class="cotainer-lg mx-2 my-5">
 	        <div class="row justify-content-center">
-	            <form action="regAction" method="post" class="col-md-6" id="regForm">
+	            <form action="/user/reg" method="post" class="col-md-6" id="regForm">
 	                <h3 class="text-muted fw-bold text-center">회원가입</h3>
 	                <div class="form-group">
 	                    <label for="regName">NAME</label>
@@ -47,4 +50,9 @@
 	
 	    <!-- go to login -->
 	    <a href="login.jsp"><div class="text-center">가입된 계정이 있나요?(click)</div></a>
+	    </c:when>
+	    <c:otherwise>
+	    	<h4 class="text-center fw-bold my-5">회원가입을 위해서 로그아웃을 해주세요.</h4>
+	    </c:otherwise>
+	    </c:choose>
     </main>

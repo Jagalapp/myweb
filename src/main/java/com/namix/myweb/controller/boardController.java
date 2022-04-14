@@ -1,10 +1,6 @@
 package com.namix.myweb.controller;
 
-import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
-import com.namix.myweb.entity.User;
-import com.namix.myweb.script.ScriptClass;
 import com.namix.myweb.service.NoticeService;
-import com.namix.myweb.service.UserService;
 
 @Controller
 @RequestMapping("/board/")
@@ -27,8 +20,6 @@ public class BoardController {
 	
 	@Autowired
 	private NoticeService noticeService;
-	@Autowired
-	private UserService userService;
 
 	@GetMapping("list")
 	public String list(Model model, @RequestParam(value="p", defaultValue="1") Integer page,
@@ -65,32 +56,6 @@ public class BoardController {
 				@RequestParam("commentContent") String commentContent) {
 		
 		return "board.detail";
-	}
-	
-	@GetMapping("login")
-	public String login() {
-		return "board.login";
-	}
-	
-	@PostMapping("login")
-	public String postLogin(Model model, @RequestParam("userId") String userId, HttpServletResponse response,
-				@RequestParam("userPassword") String userPassword, HttpSession session) throws IOException {
-		
-		User user = userService.login(userId, userPassword);
-		
-		if(user == null) {
-			ScriptClass.alert(response, "아이디 혹은 비밀번호가 올바르지 않습니다.");
-			return "redirect:login";
-		}else {
-			ScriptClass.alert(response, "로그인 성공");
-			session.setAttribute("user", user);
-			return "redirect:list";
-		}		
-	}
-	
-	@RequestMapping("reg")
-	public String reg() {
-		return "board.reg";
 	}
 	
 	@RequestMapping("updateDetail")

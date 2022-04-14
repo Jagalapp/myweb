@@ -19,4 +19,26 @@ public class ScriptClass {
         out.flush();
     }
 	
+	public static void alertAndMove(HttpServletResponse response, String alertText, String location) throws IOException {
+		init(response);
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('"+alertText+"')");
+		out.println("location.href='"+location+"'");
+		out.println("</script>");
+	}
+	
+	public static void locationMove(HttpServletResponse response, String location) throws IOException {
+		init(response);
+		PrintWriter out = response.getWriter();
+		out.println("<script>location.href='"+location+"'");
+	}
+	
+	public static void historyBack(HttpServletResponse response) throws IOException {
+		init(response);
+        PrintWriter out = response.getWriter();
+        out.println("<script>history.back()</script> ");
+        out.flush();
+	}
+	
 }
