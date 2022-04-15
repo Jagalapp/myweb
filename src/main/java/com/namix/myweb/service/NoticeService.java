@@ -29,7 +29,9 @@ public interface NoticeService {
 	// 댓글 작성 요청
 	int postComment(Comment comment);
 	// 글 작성 요청
-	int writeDetail(Notice notice);
+	int writeDetail(String listTitle, String listContent, String userId);
+	// 유저의 가장 최근 글 요청
+	int getUsersLastListId(String userId);
 	// 글 수정 요청
 	int updateDetail(Notice notice);
 	// 글 삭제 요청

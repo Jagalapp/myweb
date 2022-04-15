@@ -87,10 +87,16 @@ public class NoticeServiceimp implements NoticeService {
 
 	// 글 작성 요청
 	@Override
-	public int writeDetail(Notice notice) {
-		return noticeDao.writeDetail(notice);
+	public int writeDetail(String listTitle, String listContent, String userId) {
+		return noticeDao.writeDetail(listTitle, listContent, userId);
 	}
 
+	// 유저의 가장 최근 글 요청
+	@Override
+	public int getUsersLastListId(String userId) {
+		return noticeDao.getUsersLastListId(userId);
+	}
+	
 	// 글 수정 요청
 	@Override
 	public int updateDetail(Notice notice) {

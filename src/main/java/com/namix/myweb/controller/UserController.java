@@ -30,7 +30,7 @@ public class UserController {
 	}
 	
 	@PostMapping("login")
-	public void postLogin(Model model, @RequestParam("userId") String userId, HttpServletResponse response,
+	public void postLogin(@RequestParam("userId") String userId, HttpServletResponse response,
 				@RequestParam("userPassword") String userPassword, HttpSession session) throws IOException {
 		
 		User user = userService.login(userId, userPassword);
@@ -50,9 +50,26 @@ public class UserController {
 		ScriptClass.alertAndMove(response, "로그아웃 완료", "/board/list");
 	}
 	
-	@RequestMapping("reg")
+	@GetMapping("reg")
 	public String reg() {
 		return "board.reg";
+	}
+	
+	@PostMapping("reg")
+	public void postReg(HttpServletResponse response, @RequestParam("regName") String regName,
+					@RequestParam("regId") String regId, @RequestParam("regPassword") String regPassword,
+					@RequestParam("regEmail") String regEmail, @RequestParam("regGender") String regGender) throws IOException {
+		
+		int regResult = 0;
+		regResult = userService.reg(regId, regPassword, regName, regEmail, regGender);
+		
+		if(regResult == 0) {
+			ScriptClass.alert(response, "회원가입 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "회원가입 완료", "/board/list");
+		}
+		
 	}
 	
 }

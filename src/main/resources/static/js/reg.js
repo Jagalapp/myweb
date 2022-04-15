@@ -12,10 +12,10 @@ $(document).ready(function(){
     // 회원가입 정규표현식
     idRegExp = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
     passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#>&])[A-Za-z\d$@$!%*#>&]{8,}$/;
-    emailRegExp = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+    emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
     nameRegExp = /^[가-힣]{2,4}$/;
 
-    //아이디가 변경 되었을 시
+    // 아이디가 변경 되었을 시
     $('#idCheckBtn').change(function(){
         idCheckBtn.show();
         idCheckedText.hide();
@@ -82,6 +82,14 @@ $(document).ready(function(){
             regPassword.focus();
             return false;
         }
+        
+        // 비밀번호 와 pwcheck가 다를 시
+        if(regPassword.val() != regPasswordCheck.val()){
+            alert('비밀번호가 check와 같지 않습니다.');
+            regPasswordCheck.focus();
+            return false;
+        }
+        
         if(!emailRegExp.test(regEmail.val())){
             alert('이메일 형식이 올바르지 않습니다.');
             regEmail.focus();
@@ -101,12 +109,6 @@ $(document).ready(function(){
             return false;
         }
         */
-        // 비밀번호 와 pwcheck가 다를 시
-        if(regPassword.val() != regPasswordCheck.val()){
-            alert('비밀번호가 check와 같지 않습니다.');
-            regPasswordCheck.focus();
-            return false;
-        }
 
     });
 

@@ -8,6 +8,6 @@ public interface UserService {
 	User login(String userId, String userPassword );
 	
 	// 회원가입 요청
-	int reg(User user);
+	int reg(String regId,String regPassword,String regName,String regEmail,String regGender);
 	
 }

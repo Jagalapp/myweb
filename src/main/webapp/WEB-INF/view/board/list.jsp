@@ -77,7 +77,9 @@
 	            </div>
 	            <!-- write -->
 	            <div class="col-4 d-md-flex justify-content-end">
-	                <a href="write.jsp"><button class="btn btn-secondary" type="button">글쓰기</button></a>
+	            	<c:if test="${!empty user }">
+	                <a href="/board/writeDetail"><button class="btn btn-secondary" type="button">글쓰기</button></a>
+	                </c:if>
 	            </div>
 	        </div>
 	    </section>

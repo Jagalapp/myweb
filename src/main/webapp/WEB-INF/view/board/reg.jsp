@@ -11,25 +11,25 @@
 	                <h3 class="text-muted fw-bold text-center">회원가입</h3>
 	                <div class="form-group">
 	                    <label for="regName">NAME</label>
-	                    <input type="text" class="form-control" placeholder="NAME" id="regName">
+	                    <input type="text" class="form-control" placeholder="NAME" id="regName" name="regName">
 	                </div>
 	                <div class="form-group">
 	                    <label for="regId">ID</label>
-	                    <input type="text" class="form-control" placeholder="ID" id="regId">
+	                    <input type="text" class="form-control" placeholder="ID" id="regId" name="regId">
 	                    <input type="button" class="btn btn-secondary btn-sm" id="idCheckBtn" value="ID CHECK" onclick="idOverlapCheck">
 	                    <div class="text-success" id="idCheckedText">checked!</div>
 	                </div>
 	                <div class="form-group">
 	                    <label for="regPassword">PASSWORD</label>
-	                    <input type="password" class="form-control" placeholder="PASSWORD" id="regPassword">
+	                    <input type="password" class="form-control" placeholder="PASSWORD" id="regPassword" name="regPassword">
 	                </div>
 	                <div class="form-group">
 	                    <label for="regPasswordCheck">PASSWORD CHECK</label>
-	                    <input type="password" class="form-control" placeholder="PASSWORD CHECK" id="regPasswordCheck">
+	                    <input type="password" class="form-control" placeholder="PASSWORD CHECK" id="regPasswordCheck" name="regPasswordCheck">
 	                </div>
 	                <div class="form-group">
 	                    <label for="regEmail">EMAIL</label>
-	                    <input type="text" class="form-control" placeholder="EMAIL" id="regEmail">
+	                    <input type="text" class="form-control" placeholder="EMAIL" id="regEmail" name="regEmail">
 	                </div>
 	                <div class="form-group" id="genderFormGroup">
 	                    <label class="form-check form-check-inline">

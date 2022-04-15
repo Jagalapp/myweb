@@ -23,8 +23,8 @@ public class MybatisUserDao implements UserDao {
 	}
 
 	@Override
-	public int reg(User user) {
-		return userDaoMapper.reg(user);
+	public int reg(String regId,String regPassword,String regName,String regEmail,String regGender) {
+		return userDaoMapper.reg(regId, regPassword, regName, regEmail, regGender);
 	}
 
 }

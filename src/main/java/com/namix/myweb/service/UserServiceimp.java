@@ -20,8 +20,8 @@ public class UserServiceimp implements UserService {
 
 	// 회원가입 요청
 	@Override
-	public int reg(User user) {
-		return userDao.reg(user);
+	public int reg(String regId,String regPassword,String regName,String regEmail,String regGender) {
+		return userDao.reg(regId, regPassword, regName, regEmail, regGender);
 	}
 
 }

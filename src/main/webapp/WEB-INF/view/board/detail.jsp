@@ -31,9 +31,9 @@
 	        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick">like</button>
 	        <!-- list, update, delete -->
 	        <div class="justify-content-end d-flex gap-2 my-5 lUDBtn">
-	            <a href="/list.jsp"><button class="btn btn-secondary lUDBtn">목록</button></a>
-	            <a href="/update.jsp"><button class="btn btn-secondary lUDBtn">수정</button></a>
-	            <a href="/delete.jsp"><button class="btn btn-secondary lUDBtn">삭제</button></a>
+	            <a href="/board/list"><button class="btn btn-secondary lUDBtn">목록</button></a>
+	            <a href="/board/updateDetail"><button class="btn btn-secondary lUDBtn">수정</button></a>
+	            <a href="/board/deleteDetail"><button class="btn btn-secondary lUDBtn">삭제</button></a>
 	        </div>
 	    </section>
 	

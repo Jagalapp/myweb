@@ -1,6 +1,10 @@
 package com.namix.myweb.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.User;
+import com.namix.myweb.script.ScriptClass;
 import com.namix.myweb.service.NoticeService;
 
 @Controller
@@ -63,9 +69,28 @@ public class BoardController {
 		return "board.updateDetail";
 	}
 	
-	@RequestMapping("writeDetail")
+	@GetMapping("writeDetail")
 	public String writeDetail() {
 		return "board.writeDetail";
+	}
+	
+	@PostMapping("writeDetail")
+	public void writeDetail(HttpServletResponse response, @RequestParam("writeTitle") String listTitle,
+			 	 @RequestParam("writeContent") String listContent, HttpSession session) throws IOException {
+		
+		User user = (User) session.getAttribute("user");
+		String userId = user.getUserId();
+		int writeDetailResult = 0;
+		writeDetailResult = noticeService.writeDetail(listTitle, listContent, userId);
+		int listId = noticeService.getUsersLastListId(userId);
+		
+		if(writeDetailResult == 0) {
+			ScriptClass.alert(response, "글 작성 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "글 작성 완료", "/board/detail?id="+listId);
+		}
+		
 	}
 	
 }

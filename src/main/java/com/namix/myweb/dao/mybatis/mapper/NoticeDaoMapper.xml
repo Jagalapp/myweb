@@ -39,9 +39,13 @@
   		update list set listTitle = #{listTitle}, listContent = #{listContent} where listId = #{listId}
   </update>
   
-  <insert id="writeDetail" parameterType="com.namix.myweb.entity.Notice">
+  <insert id="writeDetail">
   		insert into list(listTitle, listContent, userId) values(#{listTitle}, #{listContent}, #{userId})
   </insert>
+  
+  <select id="getUsersLastListId" resultType="int">
+  		select listId from list where userId = #{userId} order by listId desc limit 1;
+  </select>
   
   <delete id="deleteDetail">
   		delete from list where listId = #{id)

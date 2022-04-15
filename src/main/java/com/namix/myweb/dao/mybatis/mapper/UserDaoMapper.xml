@@ -6,8 +6,8 @@
  	<select id="login" resultType="com.namix.myweb.entity.User">
  		select * from user where userId = #{userId} and userPassword = #{userPassword}
  	</select>
- 	<insert id="reg" parameterType="com.namix.myweb.entity.User">
+ 	<insert id="reg">
  		insert into user(userId, userPassword, userName, userEmail, userGender) 
- 		values(#{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userGender})
+ 		values(#{regId}, #{regPassword}, #{regName}, #{regEmail}, #{regGender})
  	</insert>
  </mapper>

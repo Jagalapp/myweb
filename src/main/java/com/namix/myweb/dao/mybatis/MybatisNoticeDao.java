@@ -67,10 +67,15 @@ public class MybatisNoticeDao implements NoticeDao {
 	}
 
 	@Override
-	public int writeDetail(Notice notice) {
-		return noticeDaoMapper.writeDetail(notice);
+	public int writeDetail(String listTitle, String listContent, String userId) {
+		return noticeDaoMapper.writeDetail(listTitle, listContent, userId);
 	}
 
+	@Override
+	public int getUsersLastListId(String userId) {
+		return noticeDaoMapper.getUsersLastListId(userId);
+	}
+	
 	@Override
 	public int deleteDetail(int id) {
 		return noticeDaoMapper.deleteDetail(id);
