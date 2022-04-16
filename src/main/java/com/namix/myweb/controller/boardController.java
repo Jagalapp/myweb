@@ -64,9 +64,29 @@ public class BoardController {
 		return "board.detail";
 	}
 	
-	@RequestMapping("updateDetail")
-	public String updateDetail() {
+	@GetMapping("updateDetail")
+	public String updateDetail(Model model, @RequestParam("id") Integer id) {
+		
+		Notice notice = noticeService.getDetail(id);
+		model.addAttribute("n", notice);
+		
 		return "board.updateDetail";
+	}
+	
+	@PostMapping("updateDetail")
+	public void postUpdateDetail(@RequestParam("listId") Integer listId, @RequestParam("detailTitle") String detailTitle,
+					 @RequestParam("detailContent") String detailContent, HttpServletResponse response) throws IOException {
+		
+		int updateDetailResult = 0;
+		updateDetailResult = noticeService.updateDetail(listId, detailTitle, detailContent);
+		
+		if(updateDetailResult == 0) {
+			ScriptClass.alert(response, "글 수정 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "글 수정 완료", "/board/detail?id="+listId);
+		}
+		
 	}
 	
 	@GetMapping("writeDetail")
@@ -89,6 +109,21 @@ public class BoardController {
 			ScriptClass.historyBack(response);
 		}else {
 			ScriptClass.alertAndMove(response, "글 작성 완료", "/board/detail?id="+listId);
+		}
+		
+	}
+	
+	@GetMapping("deleteDetail")
+	public void deleteDetail(@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {
+
+		int deleteDetailResult = 0;
+		deleteDetailResult = noticeService.deleteDetail(id);
+		
+		if(deleteDetailResult == 0) {
+			ScriptClass.alert(response, "글 삭제 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "글 삭제 완료", "/board/list");
 		}
 		
 	}

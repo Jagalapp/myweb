@@ -16,7 +16,7 @@
 	                <div class="form-group">
 	                    <label for="regId">ID</label>
 	                    <input type="text" class="form-control" placeholder="ID" id="regId" name="regId">
-	                    <input type="button" class="btn btn-secondary btn-sm" id="idCheckBtn" value="ID CHECK" onclick="idOverlapCheck">
+	                    <input type="button" class="btn btn-secondary btn-sm" id="idCheckBtn" value="ID CHECK" onclick="idCheck">
 	                    <div class="text-success" id="idCheckedText">checked!</div>
 	                </div>
 	                <div class="form-group">

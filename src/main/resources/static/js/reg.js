@@ -21,48 +21,6 @@ $(document).ready(function(){
         idCheckedText.hide();
     });
 
-    /*
-    //아이디 중복 체크
-    function idOverlapCheck(){
-        if(regId.val() == ''){
-            alert('아이디를 입력해 주세요.');
-            regId.focus();
-            return;
-        };
-        if(!idRegExp.test(regId.val())){
-            alert('아이디 형식이 올바르지 않습니다. (4-20자 영어, 숫자, 첫자에는 숫자 불가)');
-            regId.focus();
-            return;
-        }
-
-        $ajax({
-            async: true,
-            type: "POST",
-            url: "jsp",
-            data: regId.val(),
-            datatype: 'json',
-            contentType: "application/json; charset=UTF-8",
-            success: function(data){
-                if(data.cnt > 0){
-                    alert('같은 아이디가 존재합니다.');
-                    idCheckBtn.show();
-                    idCheckedText.hide();
-                    regId.focus();
-                }else{
-                    alert('사용 가능한 아이디입니다.');
-                    idCheckBtn.hide();
-                    idCheckedText.show();
-                    $('#regPassword').focus();
-                    idCheckResult = 1;
-                }
-            },
-            error: function(error){
-                alert('error : ' + error);
-            }
-        });
-    }
-    */
-
     //회원가입 버튼 클릭
     $('#regForm').submit(function(){
         // 정규 표현식 검사
@@ -111,5 +69,44 @@ $(document).ready(function(){
         */
 
     });
-
 })
+
+//아이디 중복 체크
+function idCheck(){
+    if(regId.val() == ''){
+        alert('아이디를 입력해 주세요.');
+        regId.focus();
+        return;
+    };
+    if(!idRegExp.test(regId.val())){
+        alert('아이디 형식이 올바르지 않습니다. (4-20자 영어, 숫자, 첫자에는 숫자 불가)');
+        regId.focus();
+        return;
+    }
+
+    $ajax({
+        async: true,
+        type: "POST",
+        url: "/user/idCheck",
+        datatype: 'json',
+        data: {"regId" : regId.val()},
+        contentType: "application/json; charset=UTF-8",
+        success: function(data){
+            if(data == 0){
+                alert('사용 가능한 아이디입니다.');
+                idCheckBtn.hide();
+                idCheckedText.show();
+                $('#regPassword').focus();
+                idCheckResult = 1;
+            }else{
+                alert('같은 아이디가 존재합니다.');
+                idCheckBtn.show();
+                idCheckedText.hide();
+                regId.focus();
+            }
+        },
+        error: function(error){
+            alert('error : ' + error);
+        }
+    });
+}

@@ -99,8 +99,8 @@ public class NoticeServiceimp implements NoticeService {
 	
 	// 글 수정 요청
 	@Override
-	public int updateDetail(Notice notice) {
-		return noticeDao.updateDetail(notice);
+	public int updateDetail(int id, String listTitle, String listContent) {
+		return noticeDao.updateDetail(id, listTitle, listContent);
 	}
 
 	// 글 삭제 요청

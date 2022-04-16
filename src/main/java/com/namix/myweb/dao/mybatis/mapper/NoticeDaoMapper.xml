@@ -35,8 +35,8 @@
   		insert into comment(commentContent, userId, listId) values(#{commentContent}, #{userId}, #{listId})
   </insert>
   
-  <update id="updateDetail" parameterType="com.namix.myweb.entity.Notice">
-  		update list set listTitle = #{listTitle}, listContent = #{listContent} where listId = #{listId}
+  <update id="updateDetail">
+  		update list set listTitle = #{listTitle}, listContent = #{listContent} where listId = #{id}
   </update>
   
   <insert id="writeDetail">
@@ -48,7 +48,7 @@
   </select>
   
   <delete id="deleteDetail">
-  		delete from list where listId = #{id)
+  		delete from list where listId = #{id}
   </delete>
   
 </mapper>

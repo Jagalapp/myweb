@@ -62,8 +62,8 @@ public class MybatisNoticeDao implements NoticeDao {
 	}
 
 	@Override
-	public int updateDetail(Notice notice) {
-		return noticeDaoMapper.updateDetail(notice);
+	public int updateDetail(int id, String listTitle, String listContent) {
+		return noticeDaoMapper.updateDetail(id, listTitle, listContent);
 	}
 
 	@Override

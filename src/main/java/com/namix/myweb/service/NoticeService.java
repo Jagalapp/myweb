@@ -33,7 +33,7 @@ public interface NoticeService {
 	// 유저의 가장 최근 글 요청
 	int getUsersLastListId(String userId);
 	// 글 수정 요청
-	int updateDetail(Notice notice);
+	int updateDetail(int id, String listTitle, String listContent);
 	// 글 삭제 요청
 	int deleteDetail(int id);
 

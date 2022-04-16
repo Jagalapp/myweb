@@ -30,11 +30,13 @@
 	        <!-- like -->
 	        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick">like</button>
 	        <!-- list, update, delete -->
+	        <c:if test="${n.userId == user.userId }">
 	        <div class="justify-content-end d-flex gap-2 my-5 lUDBtn">
 	            <a href="/board/list"><button class="btn btn-secondary lUDBtn">목록</button></a>
-	            <a href="/board/updateDetail"><button class="btn btn-secondary lUDBtn">수정</button></a>
-	            <a href="/board/deleteDetail"><button class="btn btn-secondary lUDBtn">삭제</button></a>
+	            <a href="/board/updateDetail?id=${n.listId }"><button class="btn btn-secondary lUDBtn">수정</button></a>
+	            <a href="/board/deleteDetail?id=${n.listId }"><button class="btn btn-secondary lUDBtn">삭제</button></a>
 	        </div>
+	        </c:if>
 	    </section>
 	
 	    <!-- regComment -->
