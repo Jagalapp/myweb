@@ -5,7 +5,6 @@ import java.util.List;
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
-import com.namix.myweb.entity.User;
 
 public interface NoticeService {
 
@@ -26,8 +25,8 @@ public interface NoticeService {
 	List<Comment> getComment(int id);
 	// 글 좋아요 클릭 요청
 	int addLIke(ListLike listLike);
-	// 댓글 작성 요청
-	int postComment(Comment comment);
+	// 댓글 등록 요청
+	int postComment(String userId, String commentContent, int id);
 	// 글 작성 요청
 	int writeDetail(String listTitle, String listContent, String userId);
 	// 유저의 가장 최근 글 요청

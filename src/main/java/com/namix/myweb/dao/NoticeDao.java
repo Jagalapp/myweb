@@ -15,7 +15,7 @@ public interface NoticeDao {
 	int getListLike(int id);
 	List<Comment> getComment(int id);
 	int addLike(ListLike listLike);
-	int postComment(Comment comment);
+	int postComment(String userId, String commentContent, int id);
 	int updateDetail(int id, String listTitle, String listContent);
 	int writeDetail(String listTitle, String listContent, String userId);
 	int getUsersLastListId(String userId);

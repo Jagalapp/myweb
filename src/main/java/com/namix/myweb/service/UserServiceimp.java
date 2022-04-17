@@ -23,5 +23,11 @@ public class UserServiceimp implements UserService {
 	public int reg(String regId,String regPassword,String regName,String regEmail,String regGender) {
 		return userDao.reg(regId, regPassword, regName, regEmail, regGender);
 	}
+	
+	// id 중복 확인
+	@Override
+	public int idCheck(String idCheckId) {
+		return userDao.idCheck(idCheckId);
+	}
 
 }

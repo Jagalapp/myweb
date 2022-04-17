@@ -57,11 +57,13 @@ public class BoardController {
 		return "board.detail";
 	}
 	
-	@PostMapping("detail")
-	public String postComment(Model model, @RequestParam("id") Integer id,
-				@RequestParam("commentContent") String commentContent) {
+	@PostMapping("detailPostComment")
+	public void postComment(@RequestParam("userId") String userId, @RequestParam("commentContent") String commentContent,
+					@RequestParam("id") Integer id) {
 		
-		return "board.detail";
+		int postCommentResult = 0;
+		postCommentResult = noticeService.postComment(userId, commentContent, id);
+	
 	}
 	
 	@GetMapping("updateDetail")

@@ -1,6 +1,7 @@
 package com.namix.myweb.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,11 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.namix.myweb.entity.User;
 import com.namix.myweb.script.ScriptClass;
@@ -68,18 +69,20 @@ public class UserController {
 			ScriptClass.alert(response, "회원가입 중 오류 발생");
 			ScriptClass.historyBack(response);
 		}else {
-			ScriptClass.alertAndMove(response, "회원가입 완료", "/board/list");
+			ScriptClass.alertAndMove(response, "회원가입 완료", "/user/login");
 		}
 
 	}
 
-	@PostMapping("idcheck")
-	public int idCheck(@RequestParam Map<String, Object> regId ) {
+	@ResponseBody
+	@PostMapping("idCheck")
+	public Map<Object, Object> idCheck(String regId ) {
 		
-		String idCheckId = (String) regId.get("regId");
 		int idCheckResult = 0;
-		idCheckResult = userService.idCheck(idCheckId);
-		return idCheckResult;
+		idCheckResult = userService.idCheck(regId);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("count", idCheckResult);
+		return map;
 		
 	}
 	

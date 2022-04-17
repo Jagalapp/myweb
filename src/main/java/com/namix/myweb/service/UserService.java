@@ -9,5 +9,8 @@ public interface UserService {
 	
 	// 회원가입 요청
 	int reg(String regId,String regPassword,String regName,String regEmail,String regGender);
+
+	// id 중복 확인
+	int idCheck(String idCheckId);
 	
 }

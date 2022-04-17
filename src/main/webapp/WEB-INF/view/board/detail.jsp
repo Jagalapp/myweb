@@ -42,12 +42,13 @@
 	    <!-- regComment -->
 	    <div class="container">
 	        <div class="border-top border-bottom p-3 mt-4">
-	            <form action="postComment.jsp" id="commentForm">
+	            <form action="detailPostComment" id="commentForm">
 	                <div class="form-floating form-group">
 	                    <input type="textarea" class="form-control" id="commentContent" name="commentContent">
 	                    <label for="commentContent">Comments</label>
 	                </div>
-	                <input type="hidden" name="userId" value="">
+	                <input type="hidden" name="userId" value="${user.userId }">
+	                <input type="hidden" name="id" value="${n.listId }">
 	                <div class="justify-content-end d-flex form-group">
 	                    <input type="submit" class="btn btn-secondary mt-2" value="post" id="commentSubmitBtn">
 	                </div>

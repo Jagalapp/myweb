@@ -32,7 +32,7 @@
   </insert>
   
   <insert id="postComment" parameterType="com.namix.myweb.entity.Comment">
-  		insert into comment(commentContent, userId, listId) values(#{commentContent}, #{userId}, #{listId})
+  		insert into comment(commentContent, userId, listId) values(#{commentContent}, #{userId}, #{id})
   </insert>
   
   <update id="updateDetail">

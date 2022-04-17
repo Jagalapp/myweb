@@ -27,4 +27,9 @@ public class MybatisUserDao implements UserDao {
 		return userDaoMapper.reg(regId, regPassword, regName, regEmail, regGender);
 	}
 
+	@Override
+	public int idCheck(String idCheckId) {
+		return userDaoMapper.idCheck(idCheckId);
+	}
+
 }

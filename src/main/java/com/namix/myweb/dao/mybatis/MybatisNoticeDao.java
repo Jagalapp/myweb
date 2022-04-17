@@ -57,8 +57,8 @@ public class MybatisNoticeDao implements NoticeDao {
 	}
 
 	@Override
-	public int postComment(Comment comment) {
-		return noticeDaoMapper.postComment(comment);
+	public int postComment(String userId, String commentContent, int id) {
+		return noticeDaoMapper.postComment(userId, commentContent, id);
 	}
 
 	@Override

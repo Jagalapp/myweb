@@ -79,10 +79,10 @@ public class NoticeServiceimp implements NoticeService {
 		return noticeDao.addLike(listLike);
 	}
 
-	// 댓글 작성 요청
+	// 댓글 등록 요청
 	@Override
-	public int postComment(Comment comment) {
-		return noticeDao.postComment(comment);
+	public int postComment(String userId, String commentContent, int id) {
+		return noticeDao.postComment(userId, commentContent, id);
 	}
 
 	// 글 작성 요청

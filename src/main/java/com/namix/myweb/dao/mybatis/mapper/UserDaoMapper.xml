@@ -10,4 +10,7 @@
  		insert into user(userId, userPassword, userName, userEmail, userGender) 
  		values(#{regId}, #{regPassword}, #{regName}, #{regEmail}, #{regGender})
  	</insert>
+ 	<select id="idCheck" resultType="int">
+ 		select count(*) from user where userId = #{idCheckId}
+ 	</select>
  </mapper>
