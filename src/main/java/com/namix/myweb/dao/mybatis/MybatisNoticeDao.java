@@ -81,4 +81,9 @@ public class MybatisNoticeDao implements NoticeDao {
 		return noticeDaoMapper.deleteDetail(id);
 	}
 
+	@Override
+	public int deleteComment(int cId) {
+		return noticeDaoMapper.deleteComment(cId);
+	}
+
 }

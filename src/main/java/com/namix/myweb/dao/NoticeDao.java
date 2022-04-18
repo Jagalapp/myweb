@@ -20,4 +20,5 @@ public interface NoticeDao {
 	int writeDetail(String listTitle, String listContent, String userId);
 	int getUsersLastListId(String userId);
 	int deleteDetail(int id);
+	int deleteComment(int cId);
 }

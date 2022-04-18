@@ -51,4 +51,8 @@
   		delete from list where listId = #{id}
   </delete>
   
+  <delete id="deleteComment">
+  		delete from comment where commentId = #{cId}
+  </delete>
+  
 </mapper>

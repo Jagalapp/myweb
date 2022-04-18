@@ -35,5 +35,7 @@ public interface NoticeService {
 	int updateDetail(int id, String listTitle, String listContent);
 	// 글 삭제 요청
 	int deleteDetail(int id);
+	// 댓글 삭제 요청
+	int deleteComment(int cId);
 
 }

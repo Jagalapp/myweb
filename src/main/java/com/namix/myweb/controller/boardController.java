@@ -59,11 +59,33 @@ public class BoardController {
 	
 	@PostMapping("detailPostComment")
 	public void postComment(@RequestParam("userId") String userId, @RequestParam("commentContent") String commentContent,
-					@RequestParam("id") Integer id) {
+					@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {
 		
 		int postCommentResult = 0;
 		postCommentResult = noticeService.postComment(userId, commentContent, id);
+		
+		if(postCommentResult == 0) {
+			ScriptClass.alert(response, "댓글 작성 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "댓글 작성 완료", "/board/detail?id="+id);
+		}
 	
+	}
+	
+	@GetMapping("deleteComment")
+	public void deleteComment(@RequestParam("cId") int cId, HttpServletResponse response, @RequestParam("id") int id) throws IOException {
+		
+		int deleteCommentResult = 0;
+		deleteCommentResult = noticeService.deleteComment(cId);
+		
+		if(deleteCommentResult == 0) {
+			ScriptClass.alert(response, "댓글 삭제 중 오류 발생");
+			ScriptClass.historyBack(response);
+		}else {
+			ScriptClass.alertAndMove(response, "댓글 삭제 완료", "/board/detail?id="+id);
+		}
+		
 	}
 	
 	@GetMapping("updateDetail")

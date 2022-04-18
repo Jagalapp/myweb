@@ -28,7 +28,7 @@
 	            </div>
 	        </div>
 	        <!-- like -->
-	        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick">like</button>
+	        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick(${n.listId})">like</button>
 	        <!-- list, update, delete -->
 	        <c:if test="${n.userId == user.userId }">
 	        <div class="justify-content-end d-flex gap-2 my-5 lUDBtn">
@@ -42,7 +42,12 @@
 	    <!-- regComment -->
 	    <div class="container">
 	        <div class="border-top border-bottom p-3 mt-4">
-	            <form action="detailPostComment" id="commentForm">
+	            <form action="detailPostComment" id="commentForm" method="post">
+	            	<c:choose>
+	            	<c:when test="${empty user }">
+	            	<div id="needLoginBox">댓글 작성을 위해선 로그인이 필요합니다.</div>
+	            	</c:when>
+	                <c:otherwise>
 	                <div class="form-floating form-group">
 	                    <input type="textarea" class="form-control" id="commentContent" name="commentContent">
 	                    <label for="commentContent">Comments</label>
@@ -52,6 +57,8 @@
 	                <div class="justify-content-end d-flex form-group">
 	                    <input type="submit" class="btn btn-secondary mt-2" value="post" id="commentSubmitBtn">
 	                </div>
+	                </c:otherwise>
+	                </c:choose>
 	            </form>
 	        </div>
 	    </div>
@@ -63,9 +70,12 @@
 	            <div class="col-6 userNameText">
 	                <div>${c.userId }</div>
 	            </div>
-	            <div class="col-6 text-muted">
+	            <div class="col-5 text-muted">
 	                <div><fmt:formatDate value="${c.commentDate }" pattern="yyyy-MM-dd"/></div>
 	            </div>
+	            <c:if test="${c.userId == user.userId }">
+	            <div class="col-1 text-decoration-none text-muted"><a href="/board/deleteComment?cId=${c.commentId }&id=${n.listId}">삭제</a></div>
+	            </c:if>
 	            <div class="col-12 mt-2 mb-4 pb-3 border-bottom">
 	                <div>${c.commentContent }</div>
 	            </div>

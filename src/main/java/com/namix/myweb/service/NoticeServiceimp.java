@@ -108,5 +108,11 @@ public class NoticeServiceimp implements NoticeService {
 	public int deleteDetail(int id) {
 		return noticeDao.deleteDetail(id);
 	}
+	
+	// 댓글 삭제 요청
+	@Override
+	public int deleteComment(int cId) {
+		return noticeDao.deleteComment(cId);
+	}
 
 }

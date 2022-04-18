@@ -7,20 +7,26 @@ $(document).ready(function(){
             return false;
         }
     })
-
-    /*
-    // like 클릭 with ajax
-    function likeBtnClick(){
-        // 회원이 아닐 시 로그인 하라는 알림 띄우기
-
-        // ajax로 전달
-        $ajax({
-            url: "jsp",
-            type: "POST",
-            cache: false,
-            dataType: "json",
-
-        });
-    };
-    */
+    
+    // 댓글 작성 로그인 필요 클릭 시
+    $('#needLoginBox').click(function(){
+		var goLoginPage = confirm('로그인 하시겠습니까?');
+		if(goLoginPage){
+			location.href='/user/login';
+		}
+	})
+    
 })
+
+ // like 버튼 클릭
+function likeBtnClick(id){
+	var listId = id;
+	alert(listId);
+    /*$.ajax({
+		url:"/board/addLike",
+		type:"post",
+		data:{
+			
+		}
+	})*/
+};
