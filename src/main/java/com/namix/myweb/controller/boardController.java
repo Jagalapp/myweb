@@ -1,7 +1,9 @@
 package com.namix.myweb.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
@@ -42,17 +45,19 @@ public class BoardController {
 	}
 	
 	@GetMapping("detail")
-	public String detail(Model model, @RequestParam("id") Integer id) {
+	public String detail(Model model, @RequestParam("id") Integer id, HttpSession session) {
 		
 		  Notice notice = noticeService.getDetail(id);
 		  int commentCount = noticeService.getCommentCount(id);
 		  int listLike = noticeService.getListLike(id);
 		  List<Comment> comment = noticeService.getComment(id);
+		  int usersLike = noticeService.usersLike(id, session);
 		  
 		  model.addAttribute("n", notice);
 		  model.addAttribute("commentCount", commentCount);
 		  model.addAttribute("listLike", listLike);
 		  model.addAttribute("comment", comment);
+		  model.addAttribute("usersLike", usersLike);
 		
 		return "board.detail";
 	}
@@ -85,6 +90,24 @@ public class BoardController {
 		}else {
 			ScriptClass.alertAndMove(response, "댓글 삭제 완료", "/board/detail?id="+id);
 		}
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("addLike")
+	public Map<Object, Object> addLike(int id, HttpSession session){
+		
+		User user = (User) session.getAttribute("user");
+		String userId = user.getUserId();
+		
+		int addLikeResult = noticeService.addLIke(id, userId);
+		int likeNumber = noticeService.getListLike(id);
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("addLikeResult", addLikeResult);
+		map.put("likeNumber", likeNumber);
+		
+		return map;
 		
 	}
 	

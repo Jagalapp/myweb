@@ -2,8 +2,9 @@ package com.namix.myweb.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.namix.myweb.entity.Comment;
-import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
 
 public interface NoticeService {
@@ -24,7 +25,7 @@ public interface NoticeService {
 	//댓글 요청
 	List<Comment> getComment(int id);
 	// 글 좋아요 클릭 요청
-	int addLIke(ListLike listLike);
+	int addLIke(int id, String userId);
 	// 댓글 등록 요청
 	int postComment(String userId, String commentContent, int id);
 	// 글 작성 요청
@@ -37,5 +38,7 @@ public interface NoticeService {
 	int deleteDetail(int id);
 	// 댓글 삭제 요청
 	int deleteComment(int cId);
+	// 유저의 좋아요 클릭 유무
+	int usersLike(int id, HttpSession session);
 
 }

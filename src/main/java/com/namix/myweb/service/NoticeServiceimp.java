@@ -2,13 +2,15 @@ package com.namix.myweb.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.namix.myweb.dao.NoticeDao;
 import com.namix.myweb.entity.Comment;
-import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.User;
 
 @Service
 public class NoticeServiceimp implements NoticeService {
@@ -75,8 +77,8 @@ public class NoticeServiceimp implements NoticeService {
 	
 	// 좋아요 클릭 요청
 	@Override
-	public int addLIke(ListLike listLike) {
-		return noticeDao.addLike(listLike);
+	public int addLIke(int id, String userId) {
+		return noticeDao.addLike(id, userId);
 	}
 
 	// 댓글 등록 요청
@@ -113,6 +115,19 @@ public class NoticeServiceimp implements NoticeService {
 	@Override
 	public int deleteComment(int cId) {
 		return noticeDao.deleteComment(cId);
+	}
+	
+	// 유저의 좋아요 클릭 유무
+	@Override
+	public int usersLike(int id, HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return 0;
+		}else {		
+			User user = (User) session.getAttribute("user");
+			String userId = user.getUserId();
+			int usersLikeCheck = noticeDao.usersLikeCheck(userId, id);
+			return usersLikeCheck;
+		}
 	}
 
 }

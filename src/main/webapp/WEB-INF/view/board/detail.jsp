@@ -18,7 +18,7 @@
 	                <div class="hitsLikeCommentText">조회수:${n.listHit }</div>
 	            </div>
 	            <div class="col-3" id="detailLike">
-	                <div class="hitsLikeCommentText">좋아요:${listLike }</div>
+	                <div class="hitsLikeCommentText" id="likeText">좋아요:${listLike }</div>
 	            </div>
 	            <div class="col-3 mb-4" id="detailComment">
 	                <div class="hitsLikeCommentText">댓글 수:${commentCount }</div>
@@ -28,7 +28,21 @@
 	            </div>
 	        </div>
 	        <!-- like -->
-	        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick(${n.listId})">like</button>
+	        <c:choose>
+	        <c:when test="${empty user }">
+	        	<div id="needLoginLikeBox">like</div>
+	        </c:when>
+	        <%-- <c:when test="${user.userId == n.listId }">
+	        	<div class="my-5"></div>
+	        </c:when>
+	        <c:when test="${usersLike >= 1 }">
+	        	<div class="fw-bold text-primary text-center h4 my-5">liked</div>
+	        </c:when> --%>
+	        <c:otherwise>
+		        <div class="fw-bold text-primary text-center h4 my-5" id="liked">liked</div>
+		        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick(${n.listId})">like</button>
+	        </c:otherwise>
+	        </c:choose>
 	        <!-- list, update, delete -->
 	        <c:if test="${n.userId == user.userId }">
 	        <div class="justify-content-end d-flex gap-2 my-5 lUDBtn">
@@ -45,7 +59,7 @@
 	            <form action="detailPostComment" id="commentForm" method="post">
 	            	<c:choose>
 	            	<c:when test="${empty user }">
-	            	<div id="needLoginBox">댓글 작성을 위해선 로그인이 필요합니다.</div>
+	            	<div id="needLoginCommentBox">댓글 작성을 위해선 로그인이 필요합니다.</div>
 	            	</c:when>
 	                <c:otherwise>
 	                <div class="form-floating form-group">

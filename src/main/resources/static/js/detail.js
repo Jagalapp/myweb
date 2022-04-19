@@ -9,7 +9,7 @@ $(document).ready(function(){
     })
     
     // 댓글 작성 로그인 필요 클릭 시
-    $('#needLoginBox').click(function(){
+    $('#needLoginCommentBox').click(function(){
 		var goLoginPage = confirm('로그인 하시겠습니까?');
 		if(goLoginPage){
 			location.href='/user/login';
@@ -20,13 +20,21 @@ $(document).ready(function(){
 
  // like 버튼 클릭
 function likeBtnClick(id){
-	var listId = id;
-	alert(listId);
-    /*$.ajax({
+    $.ajax({
 		url:"/board/addLike",
-		type:"post",
-		data:{
-			
-		}
-	})*/
+		type:"POST",
+		data:{	"id":id},
+		success: function(data){
+        	if(data.addLikeResult >= 1){
+				$('#likeText').text("좋아요:"+data.likeNumber);
+				$('#likeBtn').hide();
+				$('#liked').show();
+			}else{
+				alert('예상치 못한 에러가 발생했습니다.');
+			}
+        },
+        error: function(error){
+            alert('error : ' + error);
+        }
+	})
 };

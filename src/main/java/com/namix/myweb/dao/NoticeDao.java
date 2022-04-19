@@ -14,11 +14,12 @@ public interface NoticeDao {
 	int getCommentCount(int id);
 	int getListLike(int id);
 	List<Comment> getComment(int id);
-	int addLike(ListLike listLike);
+	int addLike(int id, String userId);
 	int postComment(String userId, String commentContent, int id);
 	int updateDetail(int id, String listTitle, String listContent);
 	int writeDetail(String listTitle, String listContent, String userId);
 	int getUsersLastListId(String userId);
 	int deleteDetail(int id);
 	int deleteComment(int cId);
+	int usersLikeCheck(String userId, int id);
 }

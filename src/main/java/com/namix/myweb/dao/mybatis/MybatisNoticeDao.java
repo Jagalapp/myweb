@@ -52,8 +52,8 @@ public class MybatisNoticeDao implements NoticeDao {
 	}
 
 	@Override
-	public int addLike(ListLike listLike) {
-		return noticeDaoMapper.addLike(listLike);
+	public int addLike(int id, String userId) {
+		return noticeDaoMapper.addLike(id, userId);
 	}
 
 	@Override
@@ -84,6 +84,11 @@ public class MybatisNoticeDao implements NoticeDao {
 	@Override
 	public int deleteComment(int cId) {
 		return noticeDaoMapper.deleteComment(cId);
+	}
+
+	@Override
+	public int usersLikeCheck(String userId, int id) {
+		return noticeDaoMapper.usersLikeCheck(userId, id);
 	}
 
 }

@@ -27,8 +27,8 @@
   		select * from comment where listId = #{id}
   </select>
   
-  <insert id="addLike" parameterType="com.namix.myweb.entity.ListLike">
-  		insert into listlike(listId, userId) values(#{listId}, #{userId})
+  <insert id="addLike">
+  		insert into listlike(listId, userId) values(#{id}, #{userId})
   </insert>
   
   <insert id="postComment" parameterType="com.namix.myweb.entity.Comment">
@@ -54,5 +54,9 @@
   <delete id="deleteComment">
   		delete from comment where commentId = #{cId}
   </delete>
+  
+  <select id="usersLikeCheck" resultType="int">
+  		select count(*) from listlike where userId = #{userId} and listId = #{id}
+  </select>
   
 </mapper>

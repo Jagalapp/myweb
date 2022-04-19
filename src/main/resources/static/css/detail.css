@@ -20,10 +20,13 @@
 #likeBtn{
     _display: none;
 }
+#liked{
+	display:none;
+}
 .lUDBtn{
     _display: none;
 }
-#needLoginBox{
+#needLoginCommentBox{
 	background-color: #f0f0ee;
 	border: 1px solid #808080;
 	height:50px;
@@ -33,4 +36,10 @@
   	color: #777871;
   	margin: auto;
   	cursor : pointer;
+}
+#needLoginLikeBox{
+	cursor: pointer;
+	height: 40px;
+	width: 100px;
+	border: 1px solid #808080;
 }
