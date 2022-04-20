@@ -129,5 +129,11 @@ public class NoticeServiceimp implements NoticeService {
 			return usersLikeCheck;
 		}
 	}
+	
+	// 조회수 증가
+	@Override
+	public int addHit(int id) {
+		return noticeDao.addHit(id);
+	}
 
 }

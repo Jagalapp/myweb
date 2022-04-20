@@ -59,4 +59,8 @@
   		select count(*) from listlike where userId = #{userId} and listId = #{id}
   </select>
   
+  <update id="addHit">
+  		update list set listHit = listHit + 1 where listId = #{id}
+  </update>
+  
 </mapper>

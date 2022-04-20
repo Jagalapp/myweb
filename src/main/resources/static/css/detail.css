@@ -36,10 +36,16 @@
   	color: #777871;
   	margin: auto;
   	cursor : pointer;
+  	border-radius: 5px;
 }
 #needLoginLikeBox{
 	cursor: pointer;
 	height: 40px;
 	width: 100px;
 	border: 1px solid #808080;
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: antiquewhite;
 }

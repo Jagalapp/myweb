@@ -22,4 +22,5 @@ public interface NoticeDao {
 	int deleteDetail(int id);
 	int deleteComment(int cId);
 	int usersLikeCheck(String userId, int id);
+	int addHit(int id);
 }

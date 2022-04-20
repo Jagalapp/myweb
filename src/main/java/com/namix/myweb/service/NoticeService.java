@@ -40,5 +40,7 @@ public interface NoticeService {
 	int deleteComment(int cId);
 	// 유저의 좋아요 클릭 유무
 	int usersLike(int id, HttpSession session);
+	// 조회수 증가
+	int addHit(int id);
 
 }

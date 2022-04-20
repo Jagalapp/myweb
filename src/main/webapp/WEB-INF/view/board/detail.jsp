@@ -30,14 +30,14 @@
 	        <!-- like -->
 	        <c:choose>
 	        <c:when test="${empty user }">
-	        	<div id="needLoginLikeBox">like</div>
+	        	<div id="needLoginLikeBox" class="my-5">like</div>
 	        </c:when>
-	        <%-- <c:when test="${user.userId == n.listId }">
+	         <c:when test="${user.userId == n.userId }">
 	        	<div class="my-5"></div>
 	        </c:when>
 	        <c:when test="${usersLike >= 1 }">
 	        	<div class="fw-bold text-primary text-center h4 my-5">liked</div>
-	        </c:when> --%>
+	        </c:when>
 	        <c:otherwise>
 		        <div class="fw-bold text-primary text-center h4 my-5" id="liked">liked</div>
 		        <button class="btn my-5" id="likeBtn" onclick="likeBtnClick(${n.listId})">like</button>

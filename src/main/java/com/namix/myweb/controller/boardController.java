@@ -52,6 +52,7 @@ public class BoardController {
 		  int listLike = noticeService.getListLike(id);
 		  List<Comment> comment = noticeService.getComment(id);
 		  int usersLike = noticeService.usersLike(id, session);
+		  int addHitResult = noticeService.addHit(id);
 		  
 		  model.addAttribute("n", notice);
 		  model.addAttribute("commentCount", commentCount);

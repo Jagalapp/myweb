@@ -91,4 +91,9 @@ public class MybatisNoticeDao implements NoticeDao {
 		return noticeDaoMapper.usersLikeCheck(userId, id);
 	}
 
+	@Override
+	public int addHit(int id) {
+		return noticeDaoMapper.addHit(id);
+	}
+
 }
