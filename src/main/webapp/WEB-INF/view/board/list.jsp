@@ -12,19 +12,19 @@
 	                    <th style="width: 25%;">Title</th>
 	                    <th style="width: 25%;">Writer</th>
 	                    <th style="width: 25%;">Date</th>
-	                    <th>Hit</th>
 	                    <th>Like</th>
+	                    <th>Hit</th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	            	<c:forEach var="n" items="${list }">
 	                <tr>
 	                    <td>${n.listId }</td>
-	                    <td><a href="/board/detail?id=${n.listId }">${n.listTitle }</a></td>
+	                    <td><a href="/board/detail?id=${n.listId }" class="fw-bold">${n.listTitle } (${n.commentNumber})</a></td>
 	                    <td>${n.userId }</td>
 	                    <td><fmt:formatDate value="${n.listDate }" pattern="yyyy-MM-dd"/></td>
+	                    <td>${n.likeNumber }</td>
 	                    <td>${n.listHit }</td>
-	                    <td>0</td>
 	                </tr>
 	                </c:forEach>
 	            </tbody>

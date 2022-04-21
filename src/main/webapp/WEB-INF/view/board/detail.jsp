@@ -18,10 +18,10 @@
 	                <div class="hitsLikeCommentText">조회수:${n.listHit }</div>
 	            </div>
 	            <div class="col-3" id="detailLike">
-	                <div class="hitsLikeCommentText" id="likeText">좋아요:${listLike }</div>
+	                <div class="hitsLikeCommentText" id="likeText">좋아요:${n.likeNumber }</div>
 	            </div>
 	            <div class="col-3 mb-4" id="detailComment">
-	                <div class="hitsLikeCommentText">댓글 수:${commentCount }</div>
+	                <div class="hitsLikeCommentText">댓글 수:${n.commentNumber }</div>
 	            </div>
 	            <div class="col-12 border-top pt-4" id="detailContent">
 	                <div>${n.listContent }</div>
@@ -44,14 +44,38 @@
 	        </c:otherwise>
 	        </c:choose>
 	        <!-- list, update, delete -->
-	        <c:if test="${n.userId == user.userId }">
 	        <div class="justify-content-end d-flex gap-2 my-5 lUDBtn">
 	            <a href="/board/list"><button class="btn btn-secondary lUDBtn">목록</button></a>
+	        <c:if test="${n.userId == user.userId }">
 	            <a href="/board/updateDetail?id=${n.listId }"><button class="btn btn-secondary lUDBtn">수정</button></a>
 	            <a href="/board/deleteDetail?id=${n.listId }"><button class="btn btn-secondary lUDBtn">삭제</button></a>
-	        </div>
 	        </c:if>
+	        </div>
 	    </section>
+	    
+	    <!-- prevDetail, nextDetail -->
+	    <div class="container" id="prevNextDetailContainer">
+		    <div>
+			    <c:choose>
+			    <c:when test="${!empty  prevNotice }">
+			    	<div class="prevNextDetailText fw-bold"><a href="/board/detail?id=${prevNotice.listId }">이전글 : ${prevNotice.listTitle }</a></div>
+			    </c:when>
+			    <c:otherwise>
+			    	<div class="prevNextDetailText fw-bold">이전 글이 없습니다.</div>
+			    </c:otherwise>
+			    </c:choose>
+		    </div>
+		    <div>
+			    <c:choose>
+			    <c:when test="${!empty nextNotice }">
+			    	<div class="prevNextDetailText fw-bold"><a href="/board/detail?id=${nextNotice.listId }">다음글 : ${nextNotice.listTitle }</a></div>
+			    </c:when>
+			    <c:otherwise>
+			    	<div class="prevNextDetailText fw-bold">다음 글이 없습니다.</div>
+			    </c:otherwise>
+			    </c:choose>
+		    </div>
+	    </div>
 	
 	    <!-- regComment -->
 	    <div class="container">
@@ -88,7 +112,7 @@
 	                <div><fmt:formatDate value="${c.commentDate }" pattern="yyyy-MM-dd"/></div>
 	            </div>
 	            <c:if test="${c.userId == user.userId }">
-	            <div class="col-1 text-decoration-none text-muted"><a href="/board/deleteComment?cId=${c.commentId }&id=${n.listId}">삭제</a></div>
+	            <div class="col-1 text-decoration-none text-muted"><a href="/board/deleteComment?cId=${c.commentId }&id=${n.listId}" class="fw-bold">삭제</a></div>
 	            </c:if>
 	            <div class="col-12 mt-2 mb-4 pb-3 border-bottom">
 	                <div>${c.commentContent }</div>

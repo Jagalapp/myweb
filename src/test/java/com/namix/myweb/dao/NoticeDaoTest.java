@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
-import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @MybatisTest
@@ -21,7 +21,7 @@ class NoticeDaoTest {
 	void test() {
 		System.out.println("hello");
 		
-		List<Notice> list = noticeDao.getList(1, 1, "listTitle", "");
+		List<NoticeView> list = noticeDao.getList(1, 1, "listTitle", "");
 		
 		System.out.println(list.get(0));
 	}

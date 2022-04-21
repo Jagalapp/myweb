@@ -3,13 +3,13 @@ package com.namix.myweb.dao;
 import java.util.List;
 
 import com.namix.myweb.entity.Comment;
-import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 
 public interface NoticeDao {
 
-	List<Notice> getList(int offset, int size, String field, String query);
-	Notice getDetail(int id);
+	List<NoticeView> getList(int offset, int size, String field, String query);
+	NoticeView getDetail(int id);
 	int getCount(String field, String query);
 	int getCommentCount(int id);
 	int getListLike(int id);
@@ -23,4 +23,6 @@ public interface NoticeDao {
 	int deleteComment(int cId);
 	int usersLikeCheck(String userId, int id);
 	int addHit(int id);
+	Notice getPrevDetail(Integer id);
+	Notice getNextDetail(Integer id);
 }

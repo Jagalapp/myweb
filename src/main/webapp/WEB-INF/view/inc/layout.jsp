@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/myweb.css">
     <link rel="stylesheet" href="<tiles:getAsString name = "css"/>">
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="<tiles:getAsString name = "script"/>"></script> 

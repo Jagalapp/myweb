@@ -28,7 +28,7 @@ public class UserController {
 	
 	@GetMapping("login")
 	public String login() {
-		return "board.login";
+		return "user.login";
 	}
 	
 	@PostMapping("login")
@@ -54,7 +54,7 @@ public class UserController {
 	
 	@GetMapping("reg")
 	public String reg() {
-		return "board.reg";
+		return "user.reg";
 	}
 	
 	@PostMapping("reg")

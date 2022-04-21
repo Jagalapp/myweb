@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 import com.namix.myweb.entity.User;
 import com.namix.myweb.script.ScriptClass;
 import com.namix.myweb.service.NoticeService;
@@ -35,7 +36,7 @@ public class BoardController {
 			 @RequestParam(value="f", defaultValue="listTitle") String field,
 	 			@RequestParam(value="q", defaultValue="") String query){
 		
-		List<Notice> list = noticeService.getList(page, field, query);
+		List<NoticeView> list = noticeService.getList(page, field, query);
 		int count = noticeService.getCount(field, query);
 		
 		model.addAttribute("list", list);
@@ -47,17 +48,17 @@ public class BoardController {
 	@GetMapping("detail")
 	public String detail(Model model, @RequestParam("id") Integer id, HttpSession session) {
 		
-		  Notice notice = noticeService.getDetail(id);
-		  int commentCount = noticeService.getCommentCount(id);
-		  int listLike = noticeService.getListLike(id);
+		  NoticeView noticeView = noticeService.getDetail(id);
 		  List<Comment> comment = noticeService.getComment(id);
+		  Notice prevNotice = noticeService.getPrevDetail(id);
+		  Notice nextNotice = noticeService.getNextDetail(id);
 		  int usersLike = noticeService.usersLike(id, session);
-		  int addHitResult = noticeService.addHit(id);
+		  noticeService.addHit(id);
 		  
-		  model.addAttribute("n", notice);
-		  model.addAttribute("commentCount", commentCount);
-		  model.addAttribute("listLike", listLike);
+		  model.addAttribute("n", noticeView);
 		  model.addAttribute("comment", comment);
+		  model.addAttribute("prevNotice", prevNotice);
+		  model.addAttribute("nextNotice", nextNotice);
 		  model.addAttribute("usersLike", usersLike);
 		
 		return "board.detail";

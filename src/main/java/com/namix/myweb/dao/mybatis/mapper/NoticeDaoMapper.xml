@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.namix.myweb.dao.NoticeDao">
-  <select id="getList" resultType="com.namix.myweb.entity.Notice">
-    	select * from list where ${field} like '%${query}%' order by listId desc limit #{offset}, #{size}
+  <select id="getList" resultType="com.namix.myweb.entity.NoticeView">
+    	select * from listview where ${field} like '%${query}%' order by listId desc limit #{offset}, #{size}
   </select>
   
-  <select id="getDetail" resultType="com.namix.myweb.entity.Notice">
-  		select * from list where listId = #{id}
+  <select id="getDetail" resultType="com.namix.myweb.entity.NoticeView">
+  		select * from listview where listId = #{id}
   </select>
   
   <select id="getCount" resultType="int">
@@ -62,5 +62,13 @@
   <update id="addHit">
   		update list set listHit = listHit + 1 where listId = #{id}
   </update>
+  
+  <select id="getPrevDetail" resultType="com.namix.myweb.entity.Notice">
+  		select * from list where listId = (select listId from list where listId &lt; #{id} order by listId desc limit 1);
+  </select>
+  
+  <select id="getNextDetail" resultType="com.namix.myweb.entity.Notice">
+  		select * from list where listId = (select listId from list where listId &gt; #{id} order by listId limit 1);
+  </select>
   
 </mapper>

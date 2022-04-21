@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.namix.myweb.dao.NoticeDao;
-import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 
 @SpringBootTest
 class MybatisNoticeDaoTest {
@@ -17,7 +17,7 @@ class MybatisNoticeDaoTest {
 	
 	@Test
 	void test() {
-		List<Notice> list = noticeDao.getList(0, 1, "listtitle", "");
+		List<NoticeView> list = noticeDao.getList(0, 1, "listtitle", "");
 		System.out.println(list.get(0));
 	}
 

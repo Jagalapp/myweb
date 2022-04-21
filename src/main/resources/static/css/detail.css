@@ -49,3 +49,14 @@
 	border-radius: 5px;
 	background-color: antiquewhite;
 }
+#prevNextDetailContainer{
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+.prevNextDetailText{
+	text-align: center;
+	margin : 15px;
+	font-size: 1.3rem;
+	padding-top: 10px;
+	color: #4f5246;
+}

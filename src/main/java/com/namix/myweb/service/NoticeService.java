@@ -6,15 +6,16 @@ import javax.servlet.http.HttpSession;
 
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 
 public interface NoticeService {
 
 	// 글 리스트 요청
-	List<Notice> getList();
-	List<Notice> getList(String field, String query);
-	List<Notice> getList(int page, String field, String query);
+	List<NoticeView> getList();
+	List<NoticeView> getList(String field, String query);
+	List<NoticeView> getList(int page, String field, String query);
 	// 디테일 뷰 요청
-	Notice getDetail(int id);
+	NoticeView getDetail(int id);
 	// 글 개수 요청
 	int getCount();
 	int getCount(String field, String query);
@@ -42,5 +43,8 @@ public interface NoticeService {
 	int usersLike(int id, HttpSession session);
 	// 조회수 증가
 	int addHit(int id);
+	// 이전, 다음 글 요청
+	Notice getPrevDetail(Integer id);
+	Notice getNextDetail(Integer id);
 
 }

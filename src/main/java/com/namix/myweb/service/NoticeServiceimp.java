@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.namix.myweb.dao.NoticeDao;
 import com.namix.myweb.entity.Comment;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 import com.namix.myweb.entity.User;
 
 @Service
@@ -20,31 +21,31 @@ public class NoticeServiceimp implements NoticeService {
 	
 	// 글 리스트 요청
 	@Override
-	public List<Notice> getList() {
+	public List<NoticeView> getList() {
 		return getList(1, "listTitle", "");
 	}
 	@Override
-	public List<Notice> getList(String field, String query) {
+	public List<NoticeView> getList(String field, String query) {
 		return getList(1, field, query);
 	}
 	@Override
-	public List<Notice> getList(int page , String field, String query) {
+	public List<NoticeView> getList(int page , String field, String query) {
 		
 		int size = 10;
 		int offset = 0+(page-1)*size;
 		
-		List<Notice> list = noticeDao.getList(offset, size, field, query);
+		List<NoticeView> list = noticeDao.getList(offset, size, field, query);
 		
 		return list;
 	}
 	
 	// 디테일 뷰 요청
 	@Override
-	public Notice getDetail(int id) {
+	public NoticeView getDetail(int id) {
 		
-		Notice notice = noticeDao.getDetail(id);
+		NoticeView noticeView = noticeDao.getDetail(id);
 		
-		return notice;
+		return noticeView;
 	}
 	
 	// 글 개수 요청
@@ -130,10 +131,20 @@ public class NoticeServiceimp implements NoticeService {
 		}
 	}
 	
-	// 조회수 증가
+	// 조회수 증가 요청
 	@Override
 	public int addHit(int id) {
 		return noticeDao.addHit(id);
+	}
+	
+	// 이전, 다음 글 요청
+	@Override
+	public Notice getPrevDetail(Integer id) {
+		return noticeDao.getPrevDetail(id);
+	}
+	@Override
+	public Notice getNextDetail(Integer id) {
+		return noticeDao.getNextDetail(id);
 	}
 
 }

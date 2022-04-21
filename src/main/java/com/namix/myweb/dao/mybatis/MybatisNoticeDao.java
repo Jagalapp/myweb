@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.namix.myweb.dao.NoticeDao;
 import com.namix.myweb.entity.Comment;
-import com.namix.myweb.entity.ListLike;
 import com.namix.myweb.entity.Notice;
+import com.namix.myweb.entity.NoticeView;
 
 @Repository
 public class MybatisNoticeDao implements NoticeDao {
@@ -22,12 +22,12 @@ public class MybatisNoticeDao implements NoticeDao {
 	}
 	
 	@Override
-	public List<Notice> getList(int offset, int size, String field, String query) {
+	public List<NoticeView> getList(int offset, int size, String field, String query) {
 		return noticeDaoMapper.getList(offset, size, field, query);
 	}
 
 	@Override
-	public Notice getDetail(int id) {
+	public NoticeView getDetail(int id) {
 		return noticeDaoMapper.getDetail(id);
 	}
 
@@ -94,6 +94,16 @@ public class MybatisNoticeDao implements NoticeDao {
 	@Override
 	public int addHit(int id) {
 		return noticeDaoMapper.addHit(id);
+	}
+
+	@Override
+	public Notice getPrevDetail(Integer id) {
+		return noticeDaoMapper.getPrevDetail(id);
+	}
+
+	@Override
+	public Notice getNextDetail(Integer id) {
+		return noticeDaoMapper.getNextDetail(id);
 	}
 
 }
