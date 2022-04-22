@@ -20,7 +20,7 @@ $(document).ready(function(){
 	$('#needLoginLikeBox').click(function(){
 		var goLoginPage = confirm('좋아요 등록을 위해서 로그인이 필요합니다. 하시겠습니까?');
 		if(goLoginPage){
-			location.href="/user/login";
+			location.href='/user/login';
 		}
 	})
     

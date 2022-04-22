@@ -15,6 +15,7 @@
 	                <div class="form-groupd my-2">
 	                    <input type="password" class="form-control" placeholder="PASSWORD" name="userPassword"  id="loginPassword" maxlength="20">
 	                </div>
+	                <input type="hidden" name="gTD" value="${gTD }"> 
 	                <input type="submit" class="btn btn-secondary form-control"  id="loginSubmitBtn" value="로그인">
 	            </form>
 	        </div>
